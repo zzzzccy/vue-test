@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import register from "@/pages/register";
+import register from "@/components/register";
 export default {
   name: "index",
   data() {
@@ -66,6 +66,9 @@ export default {
     },
     login1() {
       this.$router.push({ path: "/main" });
+    },
+    handleClick(tab, event) {
+        console.log(tab, event);
     }
   },
   components: {

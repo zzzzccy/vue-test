@@ -1,5 +1,6 @@
 <template>
   <el-form :model="register" :rules="registerrules" status-icon ref="register" label-width="100px">
+    <h3>注册</h3>
     <el-form-item label="用户名" prop="username">
       <el-input v-model="register.username"></el-input>
     </el-form-item>
@@ -62,28 +63,28 @@ export default {
       },
       registerrules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: 'blur' },
-          { min: 5, max: 12, message: "长度为5-12位", trigger: 'blur' }
+          { required: true, message: "请输入用户名", trigger: "blur" },
+          { min: 5, max: 12, message: "长度为5-12位", trigger: "blur" }
         ],
         pwd: [
-          { required: true, message: "请输入密码", trigger: 'blur' },
-          { min: 6, max: 12, message: "长度为6-12位", trigger: 'blur' }
+          { required: true, message: "请输入密码", trigger: "blur" },
+          { min: 6, max: 12, message: "长度为6-12位", trigger: "blur" }
         ],
         checkpwd: [
-          { required: true, validator: validateCheckPwd, trigger: 'blur' }
+          { required: true, validator: validateCheckPwd, trigger: "blur" }
         ],
         name: [
-          { required: true, message: '请输入姓名', trigger: 'blur' },
-          { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
+          { required: true, message: "请输入姓名", trigger: "blur" },
+          { min: 2, max: 5, message: "长度在 2 到 5 个字符", trigger: "blur" }
         ],
         age: [
-          { required: true, validator: validateCheckAge, trigger: 'blur' },
-          { type='number', message: "年龄必须为数字值" }
+          { required: true, validator: validateCheckAge, trigger: "blur" },
+          { type: "number", message: "年龄必须为数字值" }
         ],
         phone: [
-          { required: true, message: "请输入手机号", trigger: 'blur' },
-          { min: 11, max: 11, message: "长度为11位", trigger: 'blur' },
-          { type='number', message: "手机号必须为数字值" }
+          { required: true, message: "请输入手机号", trigger: "blur" },
+          { min: 11, max: 11, message: "长度为11位", trigger: "blur" },
+          { type: "number", message: "手机号必须为数字值" }
         ]
       }
     };
@@ -94,5 +95,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
