@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
 import main from '@/components/main'
-import first from '@/pages/first'
-import user from '@/pages/user'
-import edit from '@/pages/edit'
+import first from '@/pages/main/first'
+import user from '@/pages/main/user'
+import edit from '@/pages/main/edit'
 
 Vue.use(Router)
 
