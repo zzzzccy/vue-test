@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
-import main from '@/components/main'
+import main from '@/components/user/main'
 import first from '@/pages/main/first'
 import user from '@/pages/main/user'
 import edit from '@/pages/main/edit'
@@ -17,10 +17,10 @@ export default new Router({
       component: index
     },
     {
-      path: '/main',
-      name: 'main',
+      path: '/user/main',
+      name: '/user/main',
       component: main,
-      redirect: '/main/first',
+      redirect: '/user/main/first',
       children: [
         {
           path: 'first',

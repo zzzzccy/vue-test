@@ -7,24 +7,38 @@
     </el-header>
     <el-main>
       <div class="login">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="登录" name="login">
-            <el-form :model="login" :rules="loginrules" status-icon ref="login" label-width="100px">
-              <h3>登 录</h3>
-              <el-form-item label="用户名" prop="username">
-                <el-input v-model="login.username" suffix-icon="el-icon-info" placeholder="请输入用户名"></el-input>
-              </el-form-item>
-              <el-form-item label="密码" prop="pwd">
-                <el-input v-model="login.pwd" type="password" suffix-icon="el-icon-view" placeholder="请输入密码" auto-complete="off"></el-input>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" icon="el-icon-upload" @click="login1">登录</el-button>
-                <el-button type="primary" icon="el-icon-refresh" @click="reset('login')">重置</el-button>
-              </el-form-item>
-            </el-form>
+        <el-tabs :tab-position="tabPosition" style="height: auto;" v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane label="乘客" name="user">
+            <el-tabs v-model="activeName1" @tab-click="handleClick">
+              <el-tab-pane label="登录" name="login">
+                <el-form :model="login" :rules="loginrules" status-icon ref="login" label-width="100px">
+                  <h3>登 录</h3>
+                  <el-form-item label="用户名" prop="username">
+                    <el-input v-model="login.username" prefix-icon="el-icon-info" placeholder="请输入用户名"></el-input>
+                  </el-form-item>
+                  <el-form-item label="密码" prop="pwd">
+                    <el-input v-model="login.pwd" type="password" prefix-icon="el-icon-view" placeholder="请输入密码" auto-complete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button type="primary" icon="el-icon-upload" @click="login1">登录</el-button>
+                    <el-button type="primary" icon="el-icon-refresh" @click="reset('login')">重置</el-button>
+                  </el-form-item>
+                </el-form>
+              </el-tab-pane>
+              <el-tab-pane label="注册" name="reg">
+                <register></register>
+              </el-tab-pane>
+            </el-tabs>
           </el-tab-pane>
-          <el-tab-pane label="注册" name="reg">
-            <register></register>
+          <el-tab-pane label="司机" name="driver">
+            <el-tabs v-model="activeName2" @tab-click="handleClick">
+              <el-tab-pane label="登录" name="Dlogin">
+                <d-login></d-login>
+              </el-tab-pane>
+              <el-tab-pane label="注册" name="Dregister">
+                <d-register></d-register>
+              </el-tab-pane>
+            </el-tabs>
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -35,12 +49,17 @@
 
 <script>
 import register from "@/components/register";
+import DLogin from "@/components/driver/Dlogin";
+import DRegister from "@/components/driver/Dreg";
 export default {
   name: "index",
   data() {
     return {
       color1: "#409EFF",
-      activeName: "login",
+      tabPosition: "left",
+      activeName: "user",
+      activeName1: "login",
+      activeName2: "Dlogin",
       login: {
         username: '',
         pwd: '',
@@ -65,14 +84,16 @@ export default {
       this.$refs[formName].resetFields();
     },
     login1() {
-      this.$router.push({ path: "/main" });
+      this.$router.push({ path: "/user/main" });
     },
     handleClick(tab, event) {
         console.log(tab, event);
     }
   },
   components: {
-    register
+    register,
+    DLogin,
+    DRegister
   }
 };
 </script>

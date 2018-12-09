@@ -1,27 +1,20 @@
 <template>
-  <el-form :model="register" :rules="registerrules" status-icon ref="register" label-width="100px">
+  <el-form :model="dregister" :rules="dregisterrules" status-icon ref="dregister" label-width="100px">
     <h3>注册</h3>
     <el-form-item label="用户名" prop="username">
-      <el-input v-model="register.username" placeholder="请输入用户名" clearable></el-input>
+      <el-input v-model="dregister.username" placeholder="请输入用户名" clearable></el-input>
     </el-form-item>
     <el-form-item label="密码" prop="pwd">
-      <el-input v-model="register.pwd" type="password" placeholder="请输入密码" auto-complete="off" clearable></el-input>
+      <el-input v-model="dregister.pwd" type="password" placeholder="请输入密码" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="确认密码" prop="checkpwd">
-      <el-input v-model="register.checkpwd" type="password" placeholder="请再次输入密码" auto-complete="off" clearable></el-input>
+      <el-input v-model="dregister.checkpwd" type="password" placeholder="请再次输入密码" auto-complete="off" clearable></el-input>
     </el-form-item>
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="register.name" placeholder="请输入姓名" clearable></el-input>
-    </el-form-item>
-    <el-form-item label="性别" prop="sex">
-      <el-radio v-model="register.sex" label="1">男</el-radio>
-      <el-radio v-model="register.sex" label="2">女</el-radio>
-    </el-form-item>
-    <el-form-item label="年龄" prop="age">
-      <el-input v-model.number="register.age" placeholder="请输入年龄" clearable></el-input>
+    <el-form-item label="车牌号码" prop="carNum">
+      <el-input v-model="dregister.carNum" placeholder="请输入车牌号码" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="手机号" prop="phone">
-      <el-input v-model="register.phone" placeholder="请输入手机号" clearable></el-input>
+      <el-input v-model="dregister.phone" placeholder="请输入手机号" clearable></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" icon="el-icon-upload" @click="">注册</el-button>
@@ -35,23 +28,11 @@ export default {
     var validateCheckPwd = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
-      } else if (value !== this.register.pwd) {
+      } else if (value !== this.dregister.pwd) {
         callback(new Error("两次密码不一致"));
       } else {
         callback();
       }
-    };
-    var validateCheckAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("年龄不能为空"));
-      }
-      setTimeout(() => {
-        if (value < 18) {
-          callback(new Error("必须年满18岁"));
-        } else {
-          callback();
-        }
-      }, 1000);
     };
     var validateCheckPhone = (rule, value, callback) => {
       const reg = /^1[3|4|5|6|7|8|9][0-9]\d{8}$/;
@@ -62,18 +43,25 @@ export default {
         return callback(new Error("请输入长度为11位的手机号"));
       }
     };
+    var validateCheckCarNum = (rule, value, callback) => {
+      const regCarNum = /(^[\u4E00-\u9FA5]{1}[A-Z0-9]{6}$)|(^[A-Z]{2}[A-Z0-9]{2}[A-Z0-9\u4E00-\u9FA5]{1}[A-Z0-9]{4}$)|(^[\u4E00-\u9FA5]{1}[A-Z0-9]{5}[挂学警军港澳]{1}$)|(^[A-Z]{2}[0-9]{5}$)|(^(08|38){1}[A-Z0-9]{4}[A-Z0-9挂学警军港澳]{1}$)/;
+      console.log(regCarNum.test(value));
+      if (regCarNum.test(value)) {
+        callback();
+      } else {
+        return callback(new Error("车牌号码错误"));
+      }
+    };
     return {
-      activeName: "reg",
-      register: {
+      activeName: "dreg",
+      dregister: {
         username: "",
         pwd: "",
         checkpwd: "",
-        name: "",
-        sex: "1",
-        age: "",
+        carNum: "",
         phone: ""
       },
-      registerrules: {
+      dregisterrules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
           { min: 5, max: 12, message: "长度为5-12位", trigger: "blur" }
@@ -85,13 +73,9 @@ export default {
         checkpwd: [
           { required: true, validator: validateCheckPwd, trigger: "blur" }
         ],
-        name: [
-          { required: true, message: "请输入姓名", trigger: "blur" },
-          { min: 2, max: 5, message: "长度在 2 到 5 个字符", trigger: "blur" }
-        ],
-        age: [
-          { required: true, validator: validateCheckAge, trigger: "blur" },
-          { type: "number", message: "年龄必须为数字值" }
+        carNum: [
+          { required: true, message: "请输入车牌号码", trigger: "blur" },
+          { validator: validateCheckCarNum, trigger: "blur" }
         ],
         phone: [
           { required: true, message: "请输入手机号", trigger: "blur" },
@@ -100,7 +84,8 @@ export default {
       }
     };
   },
-  methods: {}
+  methods: {
+  }
 };
 </script>
 
