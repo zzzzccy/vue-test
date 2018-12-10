@@ -20,34 +20,28 @@
             </el-menu-item>
           </router-link>
           <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-menu"></i>
-              <span>个人信息</span>
-            </template>
-            <el-submenu index="2-1">
-              <template slot="title">用户信息</template>
-              <router-link tag="li" to="/main/user">
-                <el-menu-item index="2-1-1">
-                  查看用户信息
-                </el-menu-item>
-              </router-link>
-              <router-link tag="li" to="/main/edit"> 
-                <el-menu-item index="2-1-2">
-                修改用户信息
-                </el-menu-item>
-              </router-link>
-            </el-submenu>
+          <template slot="title">
+            <i class="el-icon-menu"></i>
+            <span>个人信息</span>
+          </template>
+            <router-link tag="li" to="user">
+              <el-menu-item index="2-1">
+                查看用户信息
+              </el-menu-item>
+            </router-link>
+            <router-link tag="li" to="edit"> 
+              <el-menu-item index="2-2">
+              修改用户信息
+              </el-menu-item>
+            </router-link>
           </el-submenu>
           <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>订单</span>
             </template>
-            <el-submenu index="3-1">
-              <template slot="title">订单</template>
-              <el-menu-item index="3-1-1">预约</el-menu-item>
-              <el-menu-item index="3-1-2">查看订单</el-menu-item>
-            </el-submenu>
+            <el-menu-item index="3-1">预约</el-menu-item>
+            <el-menu-item index="3-2">查看订单</el-menu-item>
           </el-submenu>
           <el-menu-item index="4">
             <i class="el-icon-menu"></i>
