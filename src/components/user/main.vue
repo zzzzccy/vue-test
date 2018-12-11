@@ -40,8 +40,16 @@
               <i class="el-icon-menu"></i>
               <span>订单</span>
             </template>
-            <el-menu-item index="3-1">预约</el-menu-item>
-            <el-menu-item index="3-2">查看订单</el-menu-item>
+            <router-link to="addOrder">
+              <el-menu-item index="3-1">
+                预约
+              </el-menu-item>
+            </router-link>
+            <router-link to="order">
+              <el-menu-item index="3-2">
+                查看订单
+              </el-menu-item>
+            </router-link>
           </el-submenu>
           <el-menu-item index="4">
             <i class="el-icon-menu"></i>

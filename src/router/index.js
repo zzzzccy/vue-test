@@ -5,6 +5,8 @@ import main from '@/components/user/main'
 import first from '@/pages/user/first'
 import user from '@/pages/user/user'
 import edit from '@/pages/user/edit'
+import addOrder from '@/pages/user/addOrder'
+import order from '@/pages/user/order'
 
 Vue.use(Router)
 
@@ -33,6 +35,14 @@ export default new Router({
         {
           path: 'edit',
           component: edit
+        },
+        {
+          path: 'addOrder',
+          component: addOrder
+        },
+        {
+          path: 'order',
+          component: order
         }
       ]
     }
