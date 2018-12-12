@@ -87,7 +87,7 @@ export default {
         ],
         phone: [
           { required: true, message: "请输入手机号", trigger: "blur" },
-          { validator: validateCheckPhone, trigger: "blur" },
+          { validator: validateCheckPhone, trigger: "blur" }
         ]
       }
     }
