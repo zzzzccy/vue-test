@@ -6,7 +6,7 @@
         <h1>预约订单信息</h1>
         <el-form :model="order" :rules="orderrules" status-icon ref="order" label-position="right" label-width="100px">
           <el-form-item label="乘车地址" prop="addr">
-            <el-input v-model="order.addr" placeholder="请输入乘车地址  auto-complete="off" clearable"></el-input>
+            <el-input v-model="order.addr" placeholder="请输入乘车地址"  auto-complete="off" clearable></el-input>
           </el-form-item>
           <el-form-item label="乘车时间" required>
             <el-col :span="11">
