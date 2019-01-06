@@ -7,6 +7,7 @@ import user from '@/pages/user/user'
 import edit from '@/pages/user/edit'
 import addOrder from '@/pages/user/addOrder'
 import order from '@/pages/user/order'
+import evaluation from '@/pages/user/evaluation'
 
 Vue.use(Router)
 
@@ -43,6 +44,10 @@ export default new Router({
         {
           path: 'order',
           component: order
+        },
+        {
+          path: 'evaluation',
+          component: evaluation
         }
       ]
     }

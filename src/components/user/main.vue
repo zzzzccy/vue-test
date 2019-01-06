@@ -51,14 +51,18 @@
               </el-menu-item>
             </router-link>
           </el-submenu>
-          <el-menu-item index="4">
-            <i class="el-icon-menu"></i>
-            <span>评价</span>
-          </el-menu-item>
-          <el-menu-item index="5">
-            <i class="el-icon-menu"></i>
-            <span>反馈</span>
-          </el-menu-item>
+          <router-link to="evaluation">
+            <el-menu-item index="4">
+              <i class="el-icon-menu"></i>
+              <span>评价</span>
+            </el-menu-item>
+          </router-link>
+          <router-link to="">
+            <el-menu-item index="5">
+              <i class="el-icon-menu"></i>
+              <span>反馈</span>
+            </el-menu-item>
+          </router-link>
         </el-menu>
       </el-aside>
       <el-main class="main">

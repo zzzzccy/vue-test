@@ -7,7 +7,8 @@
       "addr": "addr1",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 1
     },
     {
       "orderId": "2",
@@ -16,7 +17,8 @@
       "addr": "addr2",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 0
     },
     {
       "orderId": "3",
@@ -25,7 +27,8 @@
       "addr": "addr3",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 1
     },
     {
       "orderId": "4",
@@ -34,7 +37,8 @@
       "addr": "addr4",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 0
     },
     {
       "orderId": "5",
@@ -43,7 +47,8 @@
       "addr": "addr5",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 0
     },
     {
       "orderId": "6",
@@ -52,7 +57,8 @@
       "addr": "addr6",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 1
     },
     {
       "orderId": "7",
@@ -61,7 +67,52 @@
       "addr": "addr7",
       "odate": "2019-01-01",
       "otime": "06:00",
-      "ophone": "13456798210"
+      "ophone": "13456798210",
+      "evaluation": 0
+    }
+  ],
+  "evaluation": [
+    {
+      "eid": "1",
+      "oid": "1",
+      "msg": "asdasdasdasd",
+      "score": 5
+    },
+    {
+      "eid": "",
+      "oid": "",
+      "msg": "",
+      "score": ""
+    },
+    {
+      "eid": "3",
+      "oid": "3",
+      "msg": "asdasdasdasd",
+      "score": 3
+    },
+    {
+      "eid": "4",
+      "oid": "4",
+      "msg": "asdasdasdasd",
+      "score": 2
+    },
+    {
+      "eid": "",
+      "oid": "",
+      "msg": "",
+      "score": ""
+    },
+    {
+      "eid": "6",
+      "oid": "6",
+      "msg": "asdasdasdasd",
+      "score": 4
+    },
+    {
+      "eid": "",
+      "oid": "",
+      "msg": "",
+      "score": ""
     }
   ]
 }

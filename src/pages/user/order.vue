@@ -3,17 +3,26 @@
     <el-col :span="16" :offset="4" class="order">
       <h1>订单信息</h1>
       <el-card class="msgbox" shadow="hover">
-        <el-card v-for="order in OrderList" :key="order.orderId" shadow="always" class="msg">
-          用户名：
+        <el-card v-for="order in OrderList.slice((currentPage-1)*pagesize, currentPage*pagesize)" :key="order.orderId" shadow="always" class="msg">
+          用户名： {{order.userName}}
           <br>
-          司机:
+          司机:  {{order.driver}}
           <br>
-          乘车地址:
+          乘车地址:  {{order.addr}}
           <br>
-          乘车时间:
+          乘车时间:  {{order.odate}} + {{order.otime}}
           <br>
-          手机号码:
+          手机号码:  {{order.ophone}}
         </el-card>
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[2, 3, 4]"
+          :page-size="pagesize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="OrderList.length">
+        </el-pagination>
       </el-card>
     </el-col>
   </el-row>
@@ -23,19 +32,26 @@
 export default {
   data () {
     return {
-      OrderList: []
+      OrderList: [],
+      currentPage: 1,
+      pagesize: 3
     }
   },
   created:function() {
     this.getAllOrder();
   },
   methods: {
+    handleSizeChange(val) {
+      this.pagesize = val;
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val;
+    },
     getAllOrder(){
       this.$http
         .get("/api/order")
         .then(res => {
-          this.OrderList = res.data.order;
-          console.log(this.OrderList);
+          this.OrderList = res.data.data;
         })
         .catch(function(error) {
           console.log("error:" + error);
