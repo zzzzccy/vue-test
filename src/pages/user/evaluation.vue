@@ -34,12 +34,52 @@
         width="250">
       </el-table-column>
       <el-table-column
+        prop="evaluation"
         fixed="right"
         label="操作"
         width="100">
         <template slot-scope="scope">
-          <el-button @click="" type="text" size="small" disabled="evaluation">查看</el-button>
-          <el-button type="text" size="small" disabled="!evaluation">评价</el-button>
+          <el-button type="text" size="small" :disabled="scope.row.evaluation === 0"  @click="checkEvaluation(scope.row.orderId)">查看</el-button>
+          <el-dialog title="评价" :visible.sync="check" center :modal-append-to-body='false'>
+            <el-form :model="evaluationNum">
+              <el-form-item label="评论" :label-width="formLabelWidth">{{evaluationNum.msg}}
+              </el-form-item>
+              <el-form-item label="评分" :label-width="formLabelWidth">
+                <el-rate
+                  v-model="evaluationNum.score"
+                  disabled
+                  show-score
+                  text-color="#ff9900"
+                  score-template="{value}"
+                  style="line-height:2.5">
+                </el-rate>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="check = false">关 闭</el-button>
+            </div>
+          </el-dialog>
+          <el-button type="text" size="small" :disabled="scope.row.evaluation === 1"  @click="newEvaluate(scope.row.orderId)">评价</el-button>
+          <el-dialog title="评价" :visible.sync="evaluate" center :modal-append-to-body='false'>
+            <el-form :model="evaluationNew">
+              <el-form-item label="评论" :label-width="formLabelWidth">
+                <el-input type="text"></el-input>
+              </el-form-item>
+              <el-form-item label="评分" :label-width="formLabelWidth">
+                <el-rate
+                  v-model="evaluationNew.score" 
+                  show-score
+                  text-color="#ff9900"
+                  score-template="{value}"
+                  style="line-height:2.5">
+                </el-rate>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="check = false">关 闭</el-button>
+              <el-button type="primary" @click="">确 定</el-button>
+            </div>
+          </el-dialog>
         </template>
       </el-table-column>
     </el-table>
@@ -52,13 +92,27 @@ export default {
   data () {
     return {
       OrderList: [],
-      EvaluationList: []
+      EvaluationList: [],
+      formLabelWidth: '120px',
+      check: false,
+      evaluate: false,
+      evaluationNum: {
+        eid: '',
+        oid: '',
+        msg: '',
+        scope: ''
+      },
+      evaluationNew: {
+        eid: '',
+        oid: '',
+        msg: '',
+        scope: ''
+      }
     }
   },
   created:function() {
     this.getAllOrder();
     this.getAllEvaluation();
-    console.log(this.EvaluationList);
   },
   methods: {
     getAllOrder(){
@@ -80,6 +134,14 @@ export default {
         .catch(function(error) {
           console.log("error:" + error);
         });
+    },
+    checkEvaluation(val) {
+      this.evaluationNum = this.EvaluationList[val-1];
+      this.check = true;
+    },
+    newEvaluate(val) {
+      this.evaluationNew.oid = val;
+      this.evaluate = true;
     }
   }
 }
