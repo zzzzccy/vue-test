@@ -1,10 +1,11 @@
 <template>
   <el-container>
     <el-header>
-      <div class="block">
+      <!-- <div class="block">
         <el-color-picker v-model="color1" class="colorpicker" 
         @click="changecolor('color1')"></el-color-picker>
-      </div>
+      </div> -->
+      <el-button class="loginout" type="primary" @click="logout">注销</el-button>
     </el-header>
     <el-container>
       <el-aside width="200px">
@@ -57,10 +58,10 @@
               <span>评价</span>
             </el-menu-item>
           </router-link>
-          <router-link to="">
+          <router-link to="complaint">
             <el-menu-item index="5">
               <i class="el-icon-menu"></i>
-              <span>反馈</span>
+              <span>反馈/投诉</span>
             </el-menu-item>
           </router-link>
         </el-menu>
@@ -89,6 +90,9 @@ export default {
     // changecolor(color1) {
     //   document.getElementById(header).style.backgroundcolor = color1;
     // }
+    logout(){
+      this.$router.push({path:"/"});
+    }
   }
 }
 </script>
@@ -99,6 +103,9 @@ export default {
   background-color: #909399;
 }
 .colorpicker {
+  float: right;
+}
+.loginout {
   float: right;
 }
 .el-aside {

@@ -1,9 +1,9 @@
 <template>
   <el-container>
     <el-header id="header" class="header">
-      <div class="block">
+      <!-- <div class="block">
         <el-color-picker v-model="color1" class="colorpicker" @click="changecolor('color1')"></el-color-picker>
-      </div>
+      </div> -->
     </el-header>
     <el-main>
       <div class="login">

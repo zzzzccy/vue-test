@@ -66,7 +66,7 @@ export default {
 .order {
   color: aliceblue;
   background-color: #606266;
-  height: 500px;
+  height: auto;
   font-family: "Microsoft YaHei",Helvetica;
 }
 .msgbox {

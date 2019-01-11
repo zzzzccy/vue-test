@@ -3,7 +3,7 @@
     <el-col :span="16" :offset="4" class="evaluation">
       <h1>evaluation</h1>
       <el-table
-      :data="OrderList"
+      :data="OrderList.slice((currentPage-1)*pagesize, currentPage*pagesize)"
       border
       style="width: 100%">
       <el-table-column
@@ -63,7 +63,7 @@
           <el-dialog title="评价" :visible.sync="evaluate" center :modal-append-to-body='false'>
             <el-form :model="evaluationNew">
               <el-form-item label="评论" :label-width="formLabelWidth">
-                <el-input type="text"></el-input>
+                <el-input type="textarea" rows="3" placeholder="少于50字"></el-input>
               </el-form-item>
               <el-form-item label="评分" :label-width="formLabelWidth">
                 <el-rate
@@ -76,13 +76,22 @@
               </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-              <el-button @click="check = false">关 闭</el-button>
               <el-button type="primary" @click="">确 定</el-button>
+              <el-button @click="evaluate = false">关 闭</el-button>
             </div>
           </el-dialog>
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-sizes="[5, 6]"
+        :page-size="pagesize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="EvaluationList.length">
+    </el-pagination>
     </el-col>
   </el-row>
 </template>
@@ -107,7 +116,9 @@ export default {
         oid: '',
         msg: '',
         scope: ''
-      }
+      },
+      currentPage: 1,
+      pagesize: 5
     }
   },
   created:function() {
@@ -142,6 +153,12 @@ export default {
     newEvaluate(val) {
       this.evaluationNew.oid = val;
       this.evaluate = true;
+    },
+    handleSizeChange(val) {
+      this.pagesize = val;
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val;
     }
   }
 }

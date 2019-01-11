@@ -8,6 +8,7 @@ import edit from '@/pages/user/edit'
 import addOrder from '@/pages/user/addOrder'
 import order from '@/pages/user/order'
 import evaluation from '@/pages/user/evaluation'
+import complaint from '@/pages/user/complaint'
 
 Vue.use(Router)
 
@@ -48,6 +49,10 @@ export default new Router({
         {
           path: 'evaluation',
           component: evaluation
+        },
+        {
+          path: 'complaint',
+          component: complaint
         }
       ]
     }

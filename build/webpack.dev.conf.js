@@ -17,6 +17,7 @@ const app = express()
 var appData = require('../db.json')
 var order = appData.order
 var evaluation = appData.evaluation
+var complaint = appData.complaint
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -65,6 +66,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           errno:0,
           data: evaluation
+        })
+      }),
+      app.get('/api/complaint', (req, res) => {
+        res.json({
+          errno:0,
+          data: complaint
         })
       })
     }
