@@ -9,6 +9,13 @@ import addOrder from '@/pages/user/addOrder'
 import order from '@/pages/user/order'
 import evaluation from '@/pages/user/evaluation'
 import complaint from '@/pages/user/complaint'
+import admin from '@/components/admin'
+import adminuser from '@/pages/admin/admin-user'
+import admindriver from '@/pages/admin/admin-driver'
+import adminorder from '@/pages/admin/admin-order'
+import orderlist from '@/pages/admin/orderlist'
+import adminevaluation from '@/pages/admin/admin-evaluation'
+import admincomplaint from '@/pages/admin/admin-complaint'
 
 Vue.use(Router)
 
@@ -19,6 +26,38 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: admin,
+      redirect: '/admin/adminuser',
+      children: [
+        {
+          path: 'adminuser',
+          component: adminuser
+        },
+        {
+          path: 'admindriver',
+          component: admindriver
+        },
+        {
+          path: 'adminorder',
+          component: adminorder
+        },
+        {
+          path: 'orderlist',
+          component: orderlist
+        },
+        {
+          path: 'adminevaluation',
+          component: adminevaluation
+        },
+        {
+          path: 'admincomplaint',
+          component: admincomplaint
+        }
+      ]
     },
     {
       path: '/user/main',

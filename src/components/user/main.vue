@@ -108,6 +108,9 @@ export default {
 .loginout {
   float: right;
 }
+a {
+  text-decoration: none;
+}
 .el-aside {
   text-align: center;
   line-height: 200px;

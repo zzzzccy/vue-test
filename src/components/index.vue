@@ -43,7 +43,9 @@
         </el-tabs>
       </div>
     </el-main>
-    <el-footer class="footer"></el-footer>
+    <el-footer class="footer">
+      <el-button type="primary" icon="el-icon-upload" @click="loginadmin">admin</el-button>
+    </el-footer>
   </el-container>
 </template>
 
@@ -85,6 +87,9 @@ export default {
     },
     login1() {
       this.$router.push({ path: "/user/main" });
+    },
+    loginadmin() {
+      this.$router.push({ path: "/admin"});
     },
     handleClick(tab, event) {
         console.log(tab, event);

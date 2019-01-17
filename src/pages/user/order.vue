@@ -13,6 +13,8 @@
           乘车时间:  {{order.odate}} + {{order.otime}}
           <br>
           手机号码:  {{order.ophone}}
+          <br>
+          订单状态:  {{order.status}}
         </el-card>
         <el-pagination
           @size-change="handleSizeChange"
